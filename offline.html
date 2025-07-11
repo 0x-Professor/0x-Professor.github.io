@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - 0x-Professor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f, #1a1a2e);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .offline-container {
+            text-align: center;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .offline-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #00ff88;
+            animation: pulse 2s infinite;
+        }
+        
+        .offline-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .offline-message {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .offline-features {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .offline-features h3 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .offline-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .offline-features li {
+            padding: 0.5rem 0;
+            color: #b0b0b0;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .offline-features li::before {
+            content: "🔒";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+        
+        .retry-button {
+            background: linear-gradient(45deg, #00ff88, #0066ff);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .connection-status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff4757;
+            margin-right: 0.5rem;
+            animation: blink 1s infinite;
+        }
+        
+        .status-indicator.online {
+            background: #2ed573;
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        @media (max-width: 768px) {
+            .offline-container {
+                padding: 2rem;
+            }
+            
+            .offline-title {
+                font-size: 2rem;
+            }
+            
+            .offline-message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    
+    <div class="offline-container">
+        <div class="offline-icon">🔒</div>
+        
+        <h1 class="offline-title">Offline Mode</h1>
+        
+        <p class="offline-message">
+            You're currently offline, but 0x-Professor's AI Security Portfolio is still partially available thanks to advanced PWA caching.
+        </p>
+        
+        <div class="offline-features">
+            <h3>Available Offline Features:</h3>
+            <ul>
+                <li>Portfolio structure and design</li>
+                <li>Project information and descriptions</li>
+                <li>Skills and technical expertise</li>
+                <li>Static content and images</li>
+                <li>AI Console (limited functionality)</li>
+            </ul>
+        </div>
+        
+        <a href="/" class="retry-button" onclick="window.location.reload()">
+            🔄 Retry Connection
+        </a>
+        
+        <div class="connection-status">
+            <span class="status-indicator" id="status-indicator"></span>
+            <span id="connection-text">Checking connection...</span>
+        </div>
+    </div>
+    
+    <script>
+        // Connection status monitoring
+        function updateConnectionStatus() {
+            const indicator = document.getElementById('status-indicator');
+            const text = document.getElementById('connection-text');
+            
+            if (navigator.onLine) {
+                indicator.classList.add('online');
+                text.textContent = 'Connection restored! You can now access the full portfolio.';
+            } else {
+                indicator.classList.remove('online');
+                text.textContent = 'You are currently offline. Limited functionality available.';
+            }
+        }
+        
+        // Check connection status on load
+        updateConnectionStatus();
+        
+        // Listen for connection changes
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+        
+        // Auto-reload when connection is restored
+        window.addEventListener('online', () => {
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 2000);
+        });
+        
+        // Retry button functionality
+        document.querySelector('.retry-button').addEventListener('click', (e) => {
+            if (!navigator.onLine) {
+                e.preventDefault();
+                alert('Still offline. Please check your internet connection and try again.');
+            }
+        });
+    </script>
+</body>
+</html>
