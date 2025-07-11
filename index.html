@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Mazhar Saeed - AI Security Researcher & Cybersecurity Artisan</title>
+    <meta name="description" content="Portfolio of Muhammad Mazhar Saeed (0x-Professor) - Cybersecurity Artisan, AI Security Researcher, and Red Team Specialist">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="ai-brain-loader">
+                <div class="neural-network">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                </div>
+            </div>
+            <div class="loading-text">
+                <span class="typing-text">Initializing AI Security Matrix...</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">0x-Professor</span>
+                <div class="logo-particle"></div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <canvas id="neural-network-bg"></canvas>
+            <div class="matrix-rain"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="glitch-text" data-text="Muhammad Mazhar Saeed">Muhammad Mazhar Saeed</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="typing-animation"></span>
+                </p>
+                <div class="hero-tags">
+                    <span class="tag ai-tag">AI Security</span>
+                    <span class="tag cyber-tag">Red Team</span>
+                    <span class="tag rust-tag">Rust</span>
+                    <span class="tag blockchain-tag">Blockchain</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="hero-3d">
+                <canvas id="hero-3d-canvas"></canvas>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-dot"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-subtitle">AI Security Researcher & Cybersecurity Artisan</div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-description">
+                        <p>Greetings! I'm Muhammad Mazhar Saeed, known in the cybersecurity community as <strong>0x-Professor</strong>. I'm a passionate <strong>Cybersecurity Artisan</strong> and <strong>Red Team Specialist</strong> based in Islamabad, Pakistan.</p>
+                        
+                        <p>My expertise lies in the intersection of <strong>Artificial Intelligence</strong> and <strong>Cybersecurity</strong>, where I research and develop AI-assisted exploit techniques. I'm particularly fascinated by web application security and have created innovative tools like AI-powered XSS payload generators.</p>
+                        
+                        <p>As a <strong>backend architect</strong>, I leverage <strong>Django & REST APIs</strong> to build robust security solutions. My passion for <strong>Rust</strong> programming drives me to create high-performance security tools, while my blockchain expertise enables me to develop secure DApps.</p>
+                        
+                        <p>When I'm not crafting exploits or building security tools, you'll find me competing in <strong>CTF challenges</strong> and innovating new payload techniques. I'm a firm believer in the power of AI to revolutionize cybersecurity defense and offensive capabilities.</p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">9+</div>
+                            <div class="stat-label">Active Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Languages</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-3d">
+                    <canvas id="about-3d-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-subtitle">AI-Powered Security Tools & Innovations</div>
+            </div>
+            <div class="projects-grid">
+                <!-- XSS ML Generator -->
+                <div class="project-card ai-project">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag ai">AI/ML</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">XSS-ML-Generator</h3>
+                        <p class="project-description">AI-powered generator that crafts bypass-capable XSS payloads using machine learning algorithms. Revolutionary approach to web application security testing.</p>
+                        <div class="project-features">
+                            <span class="feature">Machine Learning</span>
+                            <span class="feature">Bypass Detection</span>
+                            <span class="feature">Payload Generation</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/0x-Professor/XSS-ML-Generator" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Secure GDrive v2 -->
+                <div class="project-card blockchain-project">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag typescript">TypeScript</span>
+                            <span class="tech-tag blockchain">Blockchain</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Secure-GDrive-v2</h3>
+                        <p class="project-description">Decentralized secure file sharing platform combining IPFS, Ethereum blockchain, and AES encryption for ultimate data protection.</p>
+                        <div class="project-features">
+                            <span class="feature">IPFS Integration</span>
+                            <span class="feature">Ethereum Smart Contracts</span>
+                            <span class="feature">AES Encryption</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/0x-Professor/Secure-GDrive-v2" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EVM to RISC-V Transpiler -->
+                <div class="project-card rust-project">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag rust">Rust</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">EVM-to-RISC-V Transpiler</h3>
+                        <p class="project-description">High-performance transpiler that converts EVM bytecode to RISC-V assembly for low-level blockchain analysis and optimization.</p>
+                        <div class="project-features">
+                            <span class="feature">Bytecode Analysis</span>
+                            <span class="feature">RISC-V Assembly</span>
+                            <span class="feature">Performance Optimization</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/0x-Professor/transpiler" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- AI-Powered CTF Solver -->
+                <div class="project-card ai-project">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag python">Python</span>
+                            <span class="tech-tag ai">AI</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Powered CTF Solver</h3>
+                        <p class="project-description">Intelligent system that solves capture-the-flag challenges using AI logic trees and advanced pattern recognition algorithms.</p>
+                        <div class="project-features">
+                            <span class="feature">Pattern Recognition</span>
+                            <span class="feature">Logic Trees</span>
+                            <span class="feature">Auto-Solving</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/0x-Professor/CTF-AI-Solver" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Graph Visualizer Qt -->
+                <div class="project-card cpp-project">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag cpp">C++</span>
+                            <span class="tech-tag qt">Qt</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Graph Visualizer Qt</h3>
+                        <p class="project-description">Beautiful graph algorithm visualizer built with C++ and Qt, featuring stunning graphics for BFS, DFS, and Dijkstra algorithms.</p>
+                        <div class="project-features">
+                            <span class="feature">Algorithm Visualization</span>
+                            <span class="feature">Interactive UI</span>
+                            <span class="feature">Real-time Graphics</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/0x-Professor/Graph-Traversal-Visualizer" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DApp BuyMeACoffee -->
+                <div class="project-card blockchain-project">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-coffee"></i>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag typescript">TypeScript</span>
+                            <span class="tech-tag solidity">Solidity</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">DApp-BuyMeACoffee</h3>
+                        <p class="project-description">Decentralized application built on Ethereum blockchain enabling secure and transparent coffee donations with smart contract integration.</p>
+                        <div class="project-features">
+                            <span class="feature">Smart Contracts</span>
+                            <span class="feature">Web3 Integration</span>
+                            <span class="feature">Ethereum DApp</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/0x-Professor/DApp-BuyMeACoffee" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Arsenal</h2>
+                <div class="section-subtitle">AI-Enhanced Cybersecurity Skills</div>
+            </div>
+            <div class="skills-content">
+                <div class="skills-categories">
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-brain"></i> AI & Machine Learning
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Machine Learning</span>
+                                    <span class="skill-level">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Neural Networks</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">AI Security</span>
+                                    <span class="skill-level">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-shield-alt"></i> Cybersecurity
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Penetration Testing</span>
+                                    <span class="skill-level">96%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="96%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Red Team Operations</span>
+                                    <span class="skill-level">94%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="94%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Web App Security</span>
+                                    <span class="skill-level">98%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="98%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-code"></i> Programming Languages
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-level">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Rust</span>
+                                    <span class="skill-level">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">C++</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">TypeScript</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Solidity</span>
+                                    <span class="skill-level">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="82%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <i class="fas fa-link"></i> Blockchain & DApps
+                        </h3>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Ethereum Development</span>
+                                    <span class="skill-level">87%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="87%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Smart Contracts</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Web3 Integration</span>
+                                    <span class="skill-level">83%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="83%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-3d">
+                    <canvas id="skills-3d-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-subtitle">Let's Build Something Revolutionary</div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Islamabad, Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/0x-Professor" target="_blank">@0x-Professor</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="mailto:contact@0x-professor.me">contact@0x-professor.me</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Muhammad Mazhar Saeed (0x-Professor). All rights reserved.</p>
+                    <p>Crafted with AI-enhanced security in mind.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/0x-Professor" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/0x-professor" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/0x_Professor" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
