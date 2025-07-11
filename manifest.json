@@ -1,18 +1,101 @@
 {
-  "name": "0x-Professor Portfolio",
+  "name": "0x-Professor | AI Security Portfolio",
   "short_name": "0x-Professor",
-  "description": "AI Security Researcher & Cybersecurity Artisan Portfolio",
+  "description": "World-class AI Security Researcher & Cybersecurity Artisan - Muhammad Mazhar Saeed",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
+  "background_color": "#0a0a0f",
   "theme_color": "#00ff88",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["cybersecurity", "ai", "portfolio", "security", "research"],
   "icons": [
     {
-      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiBmaWxsPSIjMGEwYTBhIi8+CjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjQwIiBzdHJva2U9IiMwMGZmODgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSI5NiIgY3k9Ijk2IiByPSIyMCIgc3Ryb2tlPSIjMDBmZjg4IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iNiIgZmlsbD0iIzAwZmY4OCIvPgo8L3N2Zz4=",
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iYnJhaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDBmZjg4Ii8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNjZmZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgcng9IjEyIiBmaWxsPSIjMGEwYTBmIi8+CjxjaXJjbGUgY3g9IjI0IiBjeT0iMjQiIHI9IjE2IiBzdHJva2U9InVybCgjYnJhaW4pIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iMjQiIGN5PSIyNCIgcj0iOCIgc3Ryb2tlPSJ1cmwoI2JyYWluKSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIi8+CjxjaXJjbGUgY3g9IjI0IiBjeT0iMjQiIHI9IjMiIGZpbGw9IiMwMGZmODgiLz4KPC9zdmc+",
+      "sizes": "48x48",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iYnJhaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDBmZjg4Ii8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNjZmZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIgcng9IjE4IiBmaWxsPSIjMGEwYTBmIi8+CjxjaXJjbGUgY3g9IjM2IiBjeT0iMzYiIHI9IjI0IiBzdHJva2U9InVybCgjYnJhaW4pIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iMzYiIGN5PSIzNiIgcj0iMTIiIHN0cm9rZT0idXJsKCNicmFpbikiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIzNiIgY3k9IjM2IiByPSI0IiBmaWxsPSIjMDBmZjg4Ii8+CjwvZz48L3N2Zz4=",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iYnJhaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDBmZjg4Ii8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNjZmZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CjxyZWN0IHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgcng9IjI0IiBmaWxsPSIjMGEwYTBmIi8+CjxjaXJjbGUgY3g9IjQ4IiBjeT0iNDgiIHI9IjMyIiBzdHJva2U9InVybCgjYnJhaW4pIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iMTYiIHN0cm9rZT0idXJsKCNicmFpbikiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSI0OCIgY3k9IjQ4IiByPSI2IiBmaWxsPSIjMDBmZjg4Ii8+CjwvZz48L3N2Zz4=",
+      "sizes": "96x96",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImJyYWluIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwZmY4OCIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDY2ZmYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQ4IiBmaWxsPSIjMGEwYTBmIi8+CjxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjY0IiBzdHJva2U9InVybCgjYnJhaW4pIiBzdHJva2Utd2lkdGg9IjgiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iMzIiIHN0cm9rZT0idXJsKCNicmFpbikiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSI5NiIgY3k9Ijk2IiByPSIxMiIgZmlsbD0iIzAwZmY4OCIvPgo8L3N2Zz4=",
       "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImJyYWluIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwZmY4OCIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDY2ZmYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyOCIgZmlsbD0iIzBhMGEwZiIvPgo8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjE2MCIgc3Ryb2tlPSJ1cmwoI2JyYWluKSIgc3Ryb2tlLXdpZHRoPSIxNiIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjgwIiBzdHJva2U9InVybCgjYnJhaW4pIiBzdHJva2Utd2lkdGg9IjgiIGZpbGw9Im5vbmUiLz4KPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIzMiIgZmlsbD0iIzAwZmY4OCIvPgo8L3N2Zz4=",
+      "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["cybersecurity", "portfolio", "ai", "rust", "blockchain"]
+  "shortcuts": [
+    {
+      "name": "AI Console",
+      "short_name": "Console",
+      "description": "Open AI Security Console",
+      "url": "/?console=true",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgM2gxOGEyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDJIMmEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMnptMCA1djEwaDIwVjhIMnptMiAyaDR2MUg0di0xem0wIDJoMTJ2MUg0di0xem0wIDJoOHYxSDR2LTF6IiBmaWxsPSIjMDBmZjg4Ii8+Cjwvc3ZnPg==",
+          "sizes": "24x24",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View AI Security Projects",
+      "url": "/#projects",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJsLTIgMnYxNmwyLTJoOFYySDE2em0wIDBoLTJMOCAySDJ2MjBoNmwyLTJWNGwyLTJ6IiBmaWxsPSIjMDBmZjg4Ii8+Cjwvc3ZnPg==",
+          "sizes": "24x24",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+aiportfolio",
+      "url": "/?handler=%s"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://0x-professor.me"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
 }
