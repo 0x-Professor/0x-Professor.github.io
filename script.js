@@ -12,19 +12,57 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show loading screen
     showLoadingScreen();
     
-    // Initialize all components
-    setTimeout(() => {
+    // Initialize all components with error handling
+    try {
+        // Set a maximum loading time
+        const maxLoadingTime = 5000; // 5 seconds max
+        
+        // Initialize components that don't depend on external libraries first
         initializeNavigation();
-        initializeHero();
-        initializeAbout3D();
-        initializeSkills3D();
-        initializeAnimations();
         initializeTypingEffect();
         initializeScrollEffects();
         initializeParticles();
         initializeContactForm();
+        
+        // Initialize 3D components with fallback
+        setTimeout(() => {
+            try {
+                if (typeof THREE !== 'undefined') {
+                    initializeHero();
+                    initializeAbout3D();
+                    initializeSkills3D();
+                    console.log('✅ 3D components initialized successfully');
+                } else {
+                    console.warn('⚠️ Three.js not loaded, skipping 3D components');
+                }
+            } catch (error) {
+                console.error('❌ Error initializing 3D components:', error);
+            }
+            
+            try {
+                if (typeof gsap !== 'undefined') {
+                    initializeAnimations();
+                    console.log('✅ GSAP animations initialized successfully');
+                } else {
+                    console.warn('⚠️ GSAP not loaded, using fallback animations');
+                }
+            } catch (error) {
+                console.error('❌ Error initializing animations:', error);
+            }
+            
+            hideLoadingScreen();
+        }, 2000);
+        
+        // Failsafe: Hide loading screen after maximum time
+        setTimeout(() => {
+            hideLoadingScreen();
+            console.log('⏰ Loading screen hidden after timeout');
+        }, maxLoadingTime);
+        
+    } catch (error) {
+        console.error('❌ Critical error during initialization:', error);
         hideLoadingScreen();
-    }, 2000);
+    }
 });
 
 // Loading Screen Functions
