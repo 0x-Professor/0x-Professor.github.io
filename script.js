@@ -115,10 +115,14 @@ function showLoadingScreen() {
 
 function hideLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.style.opacity = '0';
-    setTimeout(() => {
-        loadingScreen.style.display = 'none';
-    }, 500);
+    if (loadingScreen) {
+        loadingScreen.style.opacity = '0';
+        loadingScreen.style.transition = 'opacity 0.5s ease-out';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+        console.log('🎉 Loading screen hidden successfully');
+    }
 }
 
 // Navigation Functions
