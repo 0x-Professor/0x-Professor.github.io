@@ -1342,85 +1342,191 @@ const ProjectDemos = {
 
     loadDemo(projectId) {
         const demos = {
-            'xss-ml': this.createXSSDemo(),
-            'secure-gdrive': this.createSecureGDriveDemo(),
+            'xss-playground': this.createXSSPlaygroundDemo(),
+            'secure-tasker': this.createSecureTaskerDemo(),
             'evm-transpiler': this.createEVMDemo(),
-            'ctf-solver': this.createCTFDemo(),
-            'graph-visualizer': this.createGraphDemo(),
-            'buymecoffee-dapp': this.createDAppDemo()
+            'tic-tac-toe-ctf': this.createTicTacToeDemo(),
+            'mcp-servers': this.createMCPServersDemo(),
+            'buymecoffee-dapp': this.createDAppDemo(),
+            // Legacy IDs for backward compatibility
+            'xss-ml': this.createXSSPlaygroundDemo(),
+            'secure-gdrive': this.createSecureTaskerDemo(),
+            'ctf-solver': this.createTicTacToeDemo(),
+            'graph-visualizer': this.createMCPServersDemo()
         };
         
         this.content.innerHTML = demos[projectId] || this.createComingSoonDemo();
     },
 
-    createXSSDemo() {
+    createXSSPlaygroundDemo() {
         return `
             <div class="demo-container">
-                <h3>🧠 XSS-ML-Generator Demo</h3>
-                <p>AI-powered XSS payload generation using neural networks</p>
+                <h3>🧠 XssPlayground Demo</h3>
+                <p>Interactive XSS learning environment with real-world scenarios</p>
                 
                 <div class="demo-interface">
-                    <div class="demo-input">
-                        <label>Target Context:</label>
-                        <select id="xss-context">
-                            <option>HTML Attribute</option>
-                            <option>JavaScript String</option>
-                            <option>URL Parameter</option>
-                            <option>HTML Tag</option>
-                        </select>
+                    <div class="demo-tabs">
+                        <button class="tab-button active" onclick="ProjectDemos.switchTab('basic')">Basic XSS</button>
+                        <button class="tab-button" onclick="ProjectDemos.switchTab('advanced')">Advanced</button>
+                        <button class="tab-button" onclick="ProjectDemos.switchTab('bypass')">Filter Bypass</button>
                     </div>
                     
-                    <div class="demo-input">
-                        <label>Filter Bypass:</label>
-                        <input type="text" placeholder="Enter filters to bypass...">
+                    <div class="demo-content" id="xss-basic" style="display: block;">
+                        <div class="demo-input">
+                            <label>Input Field (Vulnerable):</label>
+                            <input type="text" id="xss-input" placeholder="Enter your payload..." onkeyup="ProjectDemos.testXSSPayload()">
+                        </div>
+                        
+                        <div class="demo-output">
+                            <label>Output (with XSS):</label>
+                            <div id="xss-vulnerable-output" class="vulnerable-output">
+                                <p>Hello, <span id="user-input"></span>!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-suggestions">
+                            <h4>Try these payloads:</h4>
+                            <div class="payload-suggestions">
+                                <code onclick="ProjectDemos.usePayload(this)">&lt;script&gt;alert('XSS')&lt;/script&gt;</code>
+                                <code onclick="ProjectDemos.usePayload(this)">&lt;img src=x onerror=alert('XSS')&gt;</code>
+                                <code onclick="ProjectDemos.usePayload(this)">&lt;svg onload=alert('XSS')&gt;&lt;/svg&gt;</code>
+                            </div>
+                        </div>
                     </div>
                     
-                    <button class="btn btn-primary" onclick="ProjectDemos.generateXSSPayload()">
-                        Generate AI Payload
-                    </button>
-                    
-                    <div class="demo-output" id="xss-output">
-                        <div class="placeholder">Click "Generate AI Payload" to see results</div>
+                    <div class="demo-content" id="xss-advanced" style="display: none;">
+                        <div class="advanced-demo">
+                            <h4>🔥 Advanced XSS Scenarios</h4>
+                            <div class="scenario-list">
+                                <div class="scenario">
+                                    <h5>DOM-based XSS</h5>
+                                    <p>Exploiting client-side JavaScript vulnerabilities</p>
+                                    <button onclick="ProjectDemos.runDOMXSS()">Demo DOM XSS</button>
+                                </div>
+                                <div class="scenario">
+                                    <h5>Stored XSS</h5>
+                                    <p>Persistent payload execution</p>
+                                    <button onclick="ProjectDemos.runStoredXSS()">Demo Stored XSS</button>
+                                </div>
+                                <div class="scenario">
+                                    <h5>Blind XSS</h5>
+                                    <p>Hidden payload execution detection</p>
+                                    <button onclick="ProjectDemos.runBlindXSS()">Demo Blind XSS</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <div class="demo-content" id="xss-bypass" style="display: none;">
+                        <div class="bypass-demo">
+                            <h4>🛡️ Filter Bypass Techniques</h4>
+                            <div class="filter-examples">
+                                <div class="filter-case">
+                                    <h5>HTML Entity Encoding</h5>
+                                    <code>&amp;lt;script&amp;gt; → &lt;script&gt;</code>
+                                </div>
+                                <div class="filter-case">
+                                    <h5>JavaScript Event Handlers</h5>
+                                    <code>&lt;img src=x onerror=alert(1)&gt;</code>
+                                </div>
+                                <div class="filter-case">
+                                    <h5>CSS Expression</h5>
+                                    <code>&lt;div style="background:url(javascript:alert(1))"&gt;</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-footer">
+                    <a href="https://github.com/0x-Professor/XssPlayground" target="_blank" class="btn btn-secondary">
+                        View Full Project
+                    </a>
                 </div>
             </div>
         `;
     },
 
-    createSecureGDriveDemo() {
+    createSecureTaskerDemo() {
         return `
             <div class="demo-container">
-                <h3>🔒 Secure-GDrive-v2 Demo</h3>
-                <p>Decentralized file sharing with IPFS + Ethereum + AES</p>
+                <h3>🔒 SecureTasker Demo</h3>
+                <p>Enterprise-grade secure task management with OWASP compliance</p>
                 
                 <div class="demo-interface">
-                    <div class="demo-section">
-                        <h4>🔐 Security Features</h4>
-                        <ul>
-                            <li>✅ AES-256 Encryption</li>
-                            <li>✅ IPFS Distributed Storage</li>
-                            <li>✅ Ethereum Smart Contract</li>
-                            <li>✅ Zero-Knowledge Proof</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="demo-section">
-                        <h4>🌐 Network Status</h4>
-                        <div class="status-grid">
-                            <div class="status-item">
-                                <span class="status-label">IPFS:</span>
-                                <span class="status-value online">ONLINE</span>
+                    <div class="security-dashboard">
+                        <div class="security-metrics">
+                            <div class="metric-card">
+                                <div class="metric-icon">🔐</div>
+                                <div class="metric-value">256-bit</div>
+                                <div class="metric-label">AES Encryption</div>
                             </div>
-                            <div class="status-item">
-                                <span class="status-label">Ethereum:</span>
-                                <span class="status-value online">CONNECTED</span>
+                            <div class="metric-card">
+                                <div class="metric-icon">🛡️</div>
+                                <div class="metric-value">OWASP</div>
+                                <div class="metric-label">Compliant</div>
                             </div>
-                            <div class="status-item">
-                                <span class="status-label">Encryption:</span>
-                                <span class="status-value online">ACTIVE</span>
+                            <div class="metric-card">
+                                <div class="metric-icon">🔍</div>
+                                <div class="metric-value">Real-time</div>
+                                <div class="metric-label">Monitoring</div>
+                            </div>
+                        </div>
+                        
+                        <div class="task-demo">
+                            <h4>🎯 Task Management Interface</h4>
+                            <div class="task-form">
+                                <input type="text" placeholder="Enter secure task..." class="secure-input">
+                                <select class="priority-select">
+                                    <option>High Priority</option>
+                                    <option>Medium Priority</option>
+                                    <option>Low Priority</option>
+                                </select>
+                                <button class="btn btn-primary" onclick="ProjectDemos.addSecureTask()">
+                                    Add Encrypted Task
+                                </button>
+                            </div>
+                            
+                            <div class="task-list" id="secure-tasks">
+                                <div class="task-item encrypted">
+                                    <div class="task-content">
+                                        <div class="task-title">🔐 Encrypted: Review security protocols</div>
+                                        <div class="task-meta">Priority: High | Encrypted: ✅ | Audited: ✅</div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <button onclick="ProjectDemos.decryptTask(this)">Decrypt</button>
+                                    </div>
+                                </div>
+                                <div class="task-item encrypted">
+                                    <div class="task-content">
+                                        <div class="task-title">🔐 Encrypted: Update firewall rules</div>
+                                        <div class="task-meta">Priority: Medium | Encrypted: ✅ | Audited: ✅</div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <button onclick="ProjectDemos.decryptTask(this)">Decrypt</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="security-features">
+                            <h4>🔥 Security Features</h4>
+                            <div class="feature-grid">
+                                <div class="feature">✅ End-to-End Encryption</div>
+                                <div class="feature">✅ Multi-Factor Authentication</div>
+                                <div class="feature">✅ SQL Injection Protection</div>
+                                <div class="feature">✅ XSS Prevention</div>
+                                <div class="feature">✅ CSRF Protection</div>
+                                <div class="feature">✅ Role-Based Access Control</div>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="demo-footer">
+                    <a href="https://github.com/0x-Professor/SecureTasker" target="_blank" class="btn btn-secondary">
+                        View Full Project
+                    </a>
                 </div>
             </div>
         `;
@@ -1527,6 +1633,133 @@ Hint: It's not what it seems...
         `;
     },
 
+    createTicTacToeDemo() {
+        return `
+            <div class="demo-container">
+                <h3>🎮 Tic-Tac-Toe CTF Demo</h3>
+                <p>Web vulnerability challenge disguised as a simple game</p>
+                
+                <div class="demo-interface">
+                    <div class="game-board" id="tic-tac-toe-board">
+                        <div class="board-row">
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(0, 0)"></div>
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(0, 1)"></div>
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(0, 2)"></div>
+                        </div>
+                        <div class="board-row">
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(1, 0)"></div>
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(1, 1)"></div>
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(1, 2)"></div>
+                        </div>
+                        <div class="board-row">
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(2, 0)"></div>
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(2, 1)"></div>
+                            <div class="board-cell" onclick="ProjectDemos.makeMove(2, 2)"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-info">
+                        <div class="current-player">Current Player: <span id="current-player">X</span></div>
+                        <button class="btn btn-secondary" onclick="ProjectDemos.resetGame()">Reset Game</button>
+                    </div>
+                    
+                    <div class="vulnerability-hints">
+                        <h4>🔍 Security Vulnerabilities Hidden:</h4>
+                        <div class="hint-list">
+                            <div class="hint">🚨 Client-side validation bypass</div>
+                            <div class="hint">🚨 Race condition exploits</div>
+                            <div class="hint">🚨 Session manipulation</div>
+                            <div class="hint">🚨 Input sanitization flaws</div>
+                        </div>
+                        <button class="btn btn-warning" onclick="ProjectDemos.showVulnerabilities()">
+                            🔓 Reveal Vulnerabilities
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="demo-footer">
+                    <a href="https://github.com/0x-Professor/Tic-Tac-Toe" target="_blank" class="btn btn-secondary">
+                        View Full Project
+                    </a>
+                </div>
+            </div>
+        `;
+    },
+
+    createMCPServersDemo() {
+        return `
+            <div class="demo-container">
+                <h3>🤖 MCPServers Demo</h3>
+                <p>MCP server infrastructure for blockchain, AI & security automation</p>
+                
+                <div class="demo-interface">
+                    <div class="mcp-dashboard">
+                        <div class="server-status">
+                            <h4>🌐 Server Status</h4>
+                            <div class="status-grid">
+                                <div class="status-card active">
+                                    <div class="status-icon">🔗</div>
+                                    <div class="status-name">Blockchain MCP</div>
+                                    <div class="status-value">ACTIVE</div>
+                                </div>
+                                <div class="status-card active">
+                                    <div class="status-icon">🧠</div>
+                                    <div class="status-name">AI Agent MCP</div>
+                                    <div class="status-value">ACTIVE</div>
+                                </div>
+                                <div class="status-card active">
+                                    <div class="status-icon">🔒</div>
+                                    <div class="status-name">Security MCP</div>
+                                    <div class="status-value">ACTIVE</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mcp-console">
+                            <h4>💻 MCP Console</h4>
+                            <div class="console-output" id="mcp-console">
+                                <div class="console-line">[2025-01-04 12:08:22] MCP Server v1.0.0 initialized</div>
+                                <div class="console-line">[2025-01-04 12:08:23] Blockchain MCP: Connected to Ethereum</div>
+                                <div class="console-line">[2025-01-04 12:08:24] AI Agent MCP: Neural networks loaded</div>
+                                <div class="console-line">[2025-01-04 12:08:25] Security MCP: Vulnerability scanner ready</div>
+                                <div class="console-line">[2025-01-04 12:08:26] All services operational ✅</div>
+                            </div>
+                            
+                            <div class="console-input">
+                                <input type="text" placeholder="Enter MCP command..." id="mcp-command">
+                                <button onclick="ProjectDemos.executeMCPCommand()">Execute</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mcp-features">
+                            <h4>🚀 Key Features</h4>
+                            <div class="feature-showcase">
+                                <div class="feature-demo">
+                                    <h5>🔗 Blockchain Integration</h5>
+                                    <button onclick="ProjectDemos.demoBlockchain()">Demo Smart Contract Call</button>
+                                </div>
+                                <div class="feature-demo">
+                                    <h5>🧠 AI Agent Control</h5>
+                                    <button onclick="ProjectDemos.demoAI()">Demo AI Security Scan</button>
+                                </div>
+                                <div class="feature-demo">
+                                    <h5>🔒 Security Automation</h5>
+                                    <button onclick="ProjectDemos.demoSecurity()">Demo Threat Detection</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-footer">
+                    <a href="https://github.com/0x-Professor/MCPServers" target="_blank" class="btn btn-secondary">
+                        View Full Project
+                    </a>
+                </div>
+            </div>
+        `;
+    },
+
     createDAppDemo() {
         return `
             <div class="demo-container">
@@ -1563,6 +1796,12 @@ Hint: It's not what it seems...
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="demo-footer">
+                    <a href="https://github.com/0x-Professor/DApp-BuyMeACoffee" target="_blank" class="btn btn-secondary">
+                        View Full Project
+                    </a>
                 </div>
             </div>
         `;
@@ -1697,6 +1936,208 @@ ret
     buyMeACoffee() {
         console.log('Processing coffee donation...');
         alert('Thank you for the coffee! ☕\n(This is a demo - no actual transaction)');
+    },
+
+    // XSS Playground Interactive Functions
+    switchTab(tabName) {
+        // Hide all tabs
+        document.querySelectorAll('.demo-content').forEach(tab => {
+            tab.style.display = 'none';
+        });
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.classList.remove('active');
+        });
+        
+        // Show selected tab
+        document.getElementById(`xss-${tabName}`).style.display = 'block';
+        event.target.classList.add('active');
+    },
+
+    testXSSPayload() {
+        const input = document.getElementById('xss-input');
+        const output = document.getElementById('user-input');
+        if (input && output) {
+            output.innerHTML = input.value; // Intentionally vulnerable for demo
+        }
+    },
+
+    usePayload(element) {
+        const input = document.getElementById('xss-input');
+        if (input) {
+            input.value = element.textContent;
+            this.testXSSPayload();
+        }
+    },
+
+    runDOMXSS() {
+        alert('DOM XSS Demo: Exploiting client-side JavaScript vulnerabilities');
+    },
+
+    runStoredXSS() {
+        alert('Stored XSS Demo: Persistent payload execution simulation');
+    },
+
+    runBlindXSS() {
+        alert('Blind XSS Demo: Hidden payload detection simulation');
+    },
+
+    // SecureTasker Interactive Functions
+    addSecureTask() {
+        const taskList = document.getElementById('secure-tasks');
+        const taskText = document.querySelector('.task-form input').value;
+        if (!taskText) return;
+        
+        const newTask = document.createElement('div');
+        newTask.className = 'task-item encrypted';
+        newTask.innerHTML = `
+            <div class="task-content">
+                <div class="task-title">🔐 Encrypted: ${taskText}</div>
+                <div class="task-meta">Priority: High | Encrypted: ✅ | Audited: ✅</div>
+            </div>
+            <div class="task-actions">
+                <button onclick="ProjectDemos.decryptTask(this)">Decrypt</button>
+            </div>
+        `;
+        taskList.appendChild(newTask);
+        document.querySelector('.task-form input').value = '';
+    },
+
+    decryptTask(button) {
+        const taskItem = button.closest('.task-item');
+        const taskTitle = taskItem.querySelector('.task-title');
+        const currentText = taskTitle.textContent;
+        
+        if (currentText.includes('🔐 Encrypted:')) {
+            taskTitle.textContent = currentText.replace('🔐 Encrypted:', '🔓 Decrypted:');
+            button.textContent = 'Encrypt';
+            taskItem.classList.remove('encrypted');
+            taskItem.classList.add('decrypted');
+        } else {
+            taskTitle.textContent = currentText.replace('🔓 Decrypted:', '🔐 Encrypted:');
+            button.textContent = 'Decrypt';
+            taskItem.classList.remove('decrypted');
+            taskItem.classList.add('encrypted');
+        }
+    },
+
+    // Tic-Tac-Toe Interactive Functions
+    gameBoard: [['', '', ''], ['', '', ''], ['', '', '']],
+    currentPlayer: 'X',
+
+    makeMove(row, col) {
+        if (this.gameBoard[row][col] !== '') return;
+        
+        this.gameBoard[row][col] = this.currentPlayer;
+        const cells = document.querySelectorAll('.board-cell');
+        const cellIndex = row * 3 + col;
+        cells[cellIndex].textContent = this.currentPlayer;
+        cells[cellIndex].classList.add('filled');
+        
+        if (this.checkWinner()) {
+            alert(`Player ${this.currentPlayer} wins!`);
+            return;
+        }
+        
+        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+        document.getElementById('current-player').textContent = this.currentPlayer;
+    },
+
+    checkWinner() {
+        const board = this.gameBoard;
+        // Check rows, columns, and diagonals
+        for (let i = 0; i < 3; i++) {
+            if (board[i][0] === board[i][1] && board[i][1] === board[i][2] && board[i][0] !== '') return true;
+            if (board[0][i] === board[1][i] && board[1][i] === board[2][i] && board[0][i] !== '') return true;
+        }
+        if (board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== '') return true;
+        if (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] !== '') return true;
+        return false;
+    },
+
+    resetGame() {
+        this.gameBoard = [['', '', ''], ['', '', ''], ['', '', '']];
+        this.currentPlayer = 'X';
+        document.querySelectorAll('.board-cell').forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('filled');
+        });
+        document.getElementById('current-player').textContent = 'X';
+    },
+
+    showVulnerabilities() {
+        alert('🔓 Vulnerabilities Revealed:\n\n' +
+              '1. Client-side validation can be bypassed\n' +
+              '2. Game state stored in localStorage is manipulable\n' +
+              '3. Race conditions in move validation\n' +
+              '4. Session tokens are predictable\n\n' +
+              'Full exploitation details in the GitHub repo!');
+    },
+
+    // MCP Servers Interactive Functions
+    executeMCPCommand() {
+        const commandInput = document.getElementById('mcp-command');
+        const command = commandInput.value.trim();
+        const console = document.getElementById('mcp-console');
+        
+        if (!command) return;
+        
+        const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const newLine = document.createElement('div');
+        newLine.className = 'console-line';
+        newLine.textContent = `[${timestamp}] > ${command}`;
+        console.appendChild(newLine);
+        
+        // Simulate command execution
+        setTimeout(() => {
+            const response = this.getMCPResponse(command);
+            const responseLine = document.createElement('div');
+            responseLine.className = 'console-line response';
+            responseLine.textContent = `[${timestamp}] ${response}`;
+            console.appendChild(responseLine);
+            console.scrollTop = console.scrollHeight;
+        }, 500);
+        
+        commandInput.value = '';
+    },
+
+    getMCPResponse(command) {
+        const responses = {
+            'status': 'All MCP servers operational ✅',
+            'blockchain status': 'Blockchain MCP: Connected to 3 networks (Ethereum, Polygon, BSC)',
+            'ai status': 'AI Agent MCP: 15 neural networks loaded, 8 active agents',
+            'security scan': 'Security MCP: Initiated full vulnerability scan...',
+            'help': 'Available commands: status, blockchain, ai, security, scan, restart',
+            'restart': 'Restarting all MCP services... Done ✅'
+        };
+        
+        return responses[command.toLowerCase()] || `Unknown command: ${command}. Type 'help' for available commands.`;
+    },
+
+    demoBlockchain() {
+        alert('🔗 Blockchain Demo:\n\nExecuting smart contract call...\n\n' +
+              'Contract: 0x742d35Cc6634C0532925a3b8D39F97DBF4d4e726\n' +
+              'Function: getBalance()\n' +
+              'Result: 1.25 ETH\n' +
+              'Gas Used: 21,000\n\n' +
+              'Transaction successful! ✅');
+    },
+
+    demoAI() {
+        alert('🧠 AI Security Scan Demo:\n\nScanning for vulnerabilities...\n\n' +
+              'XSS Vulnerabilities: 3 found\n' +
+              'SQL Injection: 1 found\n' +
+              'CSRF Tokens: Missing\n' +
+              'SSL/TLS: Secure\n\n' +
+              'Scan complete! Threat level: MEDIUM ⚠️');
+    },
+
+    demoSecurity() {
+        alert('🔒 Threat Detection Demo:\n\nAnalyzing network traffic...\n\n' +
+              'Suspicious IPs: 2 blocked\n' +
+              'Malware detected: 0\n' +
+              'Failed login attempts: 15\n' +
+              'DDoS attempts: 3 mitigated\n\n' +
+              'Security status: PROTECTED 🛡️');
     }
 };
 
